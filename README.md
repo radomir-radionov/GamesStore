@@ -2,7 +2,7 @@
 
 For starting this project you need:  
 
-```git clone https://github.com/radomir-radionov/GameStore.git```  
+```git clone https://github.com/radomir-radionov/GamesStore.git```  
 
 ### Install dependencies
 
