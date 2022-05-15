@@ -1,6 +1,6 @@
 # GamesStore
 
-For starting this project you need:  
+For run this project you need:  
 
 ```git clone https://github.com/radomir-radionov/GamesStore.git```  
 
