@@ -6,7 +6,7 @@ import Dota from "./images/dota.svg";
 import Rockstar from "./images/rockstar.svg";
 import EmptyStar from "./images/emptyStar.svg";
 import Star from "./images/star.svg";
-import MainPicture from "./images/121553.jpg";
+import MainPicture from "./images/mainBackground.jpg";
 import ProfileIcon from "./images/profileIcon.svg";
 import CartIcon from "./images/cartIcon.svg";
 import ExitIcon from "./images/exitIcon.svg";
