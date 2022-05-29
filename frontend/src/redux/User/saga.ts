@@ -50,16 +50,20 @@ interface IChangeUserNamePayload {
   name: string;
 }
 
-export function* signUp({ payload }: PayloadAction<ISignUpDataPayload>) {
+export function* signUpSaga({
+  payload,
+}: PayloadAction<ISignUpDataPayload>): Generator<StrictEffect, void> {
   const { email, name, password } = payload;
   try {
     yield call(() => postSignUpDataRequest(email, name, password));
+    const data = yield call(() => postSignInDataRequest(email, password));
+    localStorage.setItem("user", JSON.stringify(data));
   } catch (e) {
     yield put(setError("User is not authorized!!!"));
   }
 }
 
-export function* signIn({
+export function* signInSaga({
   payload,
 }: PayloadAction<ISignInDataPayload>): Generator<StrictEffect, void> {
   const { email, password } = payload;
@@ -72,7 +76,7 @@ export function* signIn({
   }
 }
 
-export function* changeUserName({
+export function* changeUserNameSaga({
   payload,
 }: PayloadAction<IChangeUserNamePayload>): Generator<StrictEffect, void> {
   const { name } = payload;
@@ -85,7 +89,7 @@ export function* changeUserName({
   }
 }
 
-export function* changeUserPassword({
+export function* changeUserPasswordSaga({
   payload,
 }: PayloadAction<IChangeUserPasswordPayload>): Generator<
   StrictEffect,
@@ -104,11 +108,11 @@ export function* changeUserPassword({
   }
 }
 
-export default function* signUpSaga() {
+export default function* userSaga() {
   yield all([
-    takeLatest(setUser, signUp),
-    takeLatest(loginData, signIn),
-    takeLatest(userChangeNameData, changeUserName),
-    takeLatest(userChangepPasswordData, changeUserPassword),
+    takeLatest(setUser, signUpSaga),
+    takeLatest(loginData, signInSaga),
+    takeLatest(userChangeNameData, changeUserNameSaga),
+    takeLatest(userChangepPasswordData, changeUserPasswordSaga),
   ]);
 }

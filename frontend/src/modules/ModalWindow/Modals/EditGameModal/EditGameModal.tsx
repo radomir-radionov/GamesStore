@@ -74,6 +74,7 @@ const EditGameModal = () => {
           <BoxFields>
             {dataForm.map((data) => (
               <FormikControl
+                key={data.name}
                 type={data.type}
                 control={data.control}
                 label={data.label}

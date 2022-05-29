@@ -88,7 +88,8 @@ export function* addNewGameSaga({
   payload,
 }: PayloadAction<any>): Generator<StrictEffect, void> {
   try {
-    yield call(() => postAddNewGameRequest(payload));
+    const data = yield call(() => postAddNewGameRequest(payload));
+    console.log("GET NEW GAME", data);
   } catch (e) {
     yield put(
       setError(
@@ -129,8 +130,8 @@ export default function* gamesSaga() {
     takeLatest(getTopGamesRequestAction, getTopGames),
     takeLatest(addNewGame, addNewGameSaga),
     takeLatest(editGame, editGameSaga),
-    takeLatest(deleteGame, deleteGameSaga),
     takeLatest(getFilteredGames, filteredGamesSaga),
     takeLatest(getSearchedGames, getSearchedGamesSaga),
+    takeLatest(deleteGame, deleteGameSaga),
   ]);
 }

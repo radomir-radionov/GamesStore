@@ -7,10 +7,10 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      dispatch(loginDataRequest(foundUser));
+    const isUser = localStorage.getItem("user");
+    if (isUser) {
+      const searchedUser = JSON.parse(isUser);
+      dispatch(loginDataRequest(searchedUser));
     }
   }, [dispatch]);
 

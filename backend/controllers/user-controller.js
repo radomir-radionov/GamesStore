@@ -33,7 +33,6 @@ class UserController {
     } catch (e) {
       next(e);
     }
-    return res.status(200);
   }
 
   async login(req, res, next) {
@@ -48,7 +47,6 @@ class UserController {
     } catch (e) {
       next(e);
     }
-    return res.status(200);
   }
 
   async saveProfile(req, res, next) {
@@ -59,7 +57,6 @@ class UserController {
     } catch (e) {
       next(e);
     }
-    return res.status(200);
   }
 
   async getUsers(req, res, next) {
@@ -69,7 +66,6 @@ class UserController {
     } catch (e) {
       next(e);
     }
-    return res.status(200);
   }
 }
 

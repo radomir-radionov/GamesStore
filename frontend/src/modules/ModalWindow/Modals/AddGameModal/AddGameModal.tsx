@@ -31,7 +31,6 @@ const AddGameModal = () => {
       platform: values.platform,
     };
     dispatch(addNewGame(newGame));
-    window.location.reload();
   };
 
   const onClickCloseModal = () => {
