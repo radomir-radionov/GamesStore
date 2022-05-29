@@ -1,25 +1,16 @@
-import { AgeFilter } from "./AgeFilter";
-import { ControlPanelCart } from "./ControlPanelCart";
-import { CriteriaFilter } from "./CriteriaFilter";
-import { Footer } from "./Footer";
-import { GameCard } from "./GameCard";
-import { GameCardInCart } from "./GameCardInCart";
-import { Games } from "./Games";
-import { GenreFilter } from "./GenreFilter";
-import { Header } from "./Header";
-import { HumburgerMenu } from "./HumburgerMenu";
-import { Rating } from "./Rating";
-
-export {
-  Header,
-  Footer,
-  HumburgerMenu,
-  GameCard,
-  Games,
-  Rating,
-  GenreFilter,
-  AgeFilter,
-  CriteriaFilter,
-  GameCardInCart,
-  ControlPanelCart,
-};
+export { default as AgeFilter } from "./Filters/AgeFilter/AgeFilter";
+export { default as ControlPanelCart } from "./ControlPanelCart/ControlPanelCart";
+export { default as CriteriaFilter } from "./Filters/CriteriaFilter/CriteriaFilter";
+export { default as Footer } from "./Footer/Footer";
+export { default as GameCard } from "./GameCard/GameCard";
+export { default as GameCardInCart } from "./GameCardInCart/GameCardInCart";
+export { default as TopGames } from "./TopGames/TopGames";
+export { default as GenreFilter } from "./Filters/GenreFilter/GenreFilter";
+export { default as Header } from "./Header/Header";
+export { default as HumburgerMenu } from "./HumburgerMenu/HumburgerMenu";
+export { default as Rating } from "./Rating/Rating";
+export { default as SearchBar } from "./SearchBar/SearchBar";
+export { default as Categories } from "./Categories/Categories";
+export { default as ErrorMessage } from "./ErrorMessage/ErrorMessage";
+export { default as FiltersBar } from "./FiltersBar/FiltersBar";
+export { default as GamesList } from "./GamesList/GamesList";

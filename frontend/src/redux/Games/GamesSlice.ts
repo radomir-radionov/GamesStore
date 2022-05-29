@@ -4,6 +4,7 @@ import { IGameData } from "types";
 interface IInitialState {
   loading: boolean;
   topGames: IGameData[];
+  searchedGames: any[];
   games: IGameData[];
   cartGames: IGameData[];
   filteredGamesParamsRequest: null;
@@ -11,11 +12,12 @@ interface IInitialState {
   payloadNewGame: null;
   editGame: null;
   newGameData: null;
+  error: string;
 }
 
 const initialState: IInitialState = {
-  loading: false,
   topGames: [],
+  searchedGames: [],
   games: [],
   cartGames: [],
   filteredGamesParamsRequest: null,
@@ -23,6 +25,8 @@ const initialState: IInitialState = {
   payloadNewGame: null,
   editGame: null,
   newGameData: null,
+  loading: false,
+  error: "",
 };
 
 export const gamesSlice = createSlice({
@@ -39,10 +43,10 @@ export const gamesSlice = createSlice({
     addNewGame: (state, { payload }) => {
       state.payloadNewGame = payload;
     },
-    filteredGamesParams: (state, { payload }) => {
+    getFilteredGames: (state, { payload }) => {
       state.filteredGamesParamsRequest = payload;
     },
-    filteredGames: (state, { payload }) => {
+    setFilteredGames: (state, { payload }) => {
       state.filteredGames = payload;
     },
     addEditGameData: (state, { payload }) => {
@@ -57,7 +61,17 @@ export const gamesSlice = createSlice({
     addGameInCart: (state, { payload }) => {
       state.cartGames = [...state.cartGames, payload];
     },
+    getSearchedGames: (state, { payload }) => {},
+    setSearchedGames: (state, { payload }) => {
+      state.searchedGames = payload;
+    },
     deleteGame: () => {},
+    setLoading: (state, { payload }) => {
+      state.loading = payload;
+    },
+    setError: (state, { payload }) => {
+      state.error = payload;
+    },
   },
 });
 
@@ -68,10 +82,13 @@ export const {
   addEditGameData,
   editGame,
   deleteGame,
-  filteredGamesParams,
-  filteredGames,
+  getFilteredGames,
+  setFilteredGames,
   addGameInCart,
   updateCartGamesData,
+  getSearchedGames,
+  setSearchedGames,
+  setLoading,
 } = gamesSlice.actions;
 
 export default gamesSlice.reducer;

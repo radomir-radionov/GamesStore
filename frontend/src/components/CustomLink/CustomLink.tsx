@@ -1,6 +1,6 @@
 import { ReactNode, ReactPortal } from "react";
 import { LinkProps, useMatch, useResolvedPath } from "react-router-dom";
-import { NavLink, TextNavLink } from "./styles";
+import { NavLink } from "./styles";
 
 interface ILinkProps extends LinkProps {
   children: ReactNode | ReactPortal;
@@ -14,7 +14,7 @@ const CustomLink = ({ children, to, onClick }: ILinkProps) => {
 
   return (
     <NavLink active={match} to={to} onClick={onClick}>
-      <TextNavLink>{children}</TextNavLink>
+      {children}
     </NavLink>
   );
 };

@@ -1,27 +1,16 @@
-import { ControlPanelCart, Footer, Header } from "modules";
-import { GameCardInCart } from "modules/GameCardInCart";
+import { ControlPanelCart, Footer, GameCardInCart, Header } from "modules";
 import { useSelector } from "react-redux";
 import { getGamesInCartSelector } from "redux/Games/selectors";
 import { IGameData } from "types";
-import {
-  Hr,
-  Main,
-  Table,
-  Tbody,
-  Th,
-  Thead,
-  Title,
-  Tr,
-  Wrapper,
-} from "./styles";
+import { Hr, Section, Table, Tbody, Th, Thead, Title, Tr } from "./styles";
 
 const CartPage = () => {
   const cartGames: IGameData[] = useSelector(getGamesInCartSelector);
 
   return (
-    <Wrapper>
+    <>
       <Header />
-      <Main>
+      <Section>
         <Title>Cart Page</Title>
         <Hr />
         <Table>
@@ -43,9 +32,9 @@ const CartPage = () => {
           </Tbody>
         </Table>
         <ControlPanelCart />
-      </Main>
+      </Section>
       <Footer />
-    </Wrapper>
+    </>
   );
 };
 

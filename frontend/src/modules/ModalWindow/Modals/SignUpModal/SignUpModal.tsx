@@ -16,7 +16,7 @@ import {
 import FormikControl from "../../formikControl";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setUser } from "redux/userActivity/UserActivitySlice";
+import { setUser } from "redux/User/UserSlice";
 
 interface ISumbitProps {
   email: string;

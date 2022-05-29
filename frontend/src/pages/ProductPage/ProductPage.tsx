@@ -1,47 +1,44 @@
+import { Spiner } from "components";
 import {
-  AgeFilter,
-  CriteriaFilter,
+  ErrorMessage,
+  FiltersBar,
   Footer,
-  GameCard,
-  GenreFilter,
+  GamesList,
   Header,
+  SearchBar,
 } from "modules";
 import { MODAL_TYPES } from "modules/ModalWindow/modalTypes";
-import { SearchBar } from "modules/SearchBar";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useSearchParams } from "react-router-dom";
-import { filteredGamesParams } from "redux/Games/GamesSlice";
-import { getFilteredGamesSelector } from "redux/Games/selectors";
+import { getFilteredGames } from "redux/Games/GamesSlice";
+import {
+  getFilteredGamesSelector,
+  getLoadingSelector,
+} from "redux/Games/selectors";
 import { openModal } from "redux/modalWindow/ModalWindowSlice";
-import { getCurrentUserDataSelector } from "redux/userActivity/selectors";
+import { getCurrentUserDataSelector } from "redux/User/selectors";
 import { IGameData } from "types";
-import useSuspense from "utils/UseSuspense/UseSuspense";
 import {
   BoxGames,
   BoxSearchBar,
-  BoxSort,
+  BoxFilters,
   Button,
-  Col,
-  Container,
-  ContainerBoxGames,
   Hr,
-  Navigation,
+  Section,
   Row,
-  StyledSpinner,
   Title,
-  TitlePlatform,
-  Wrapper,
 } from "./styles";
 
 const ProductPage = () => {
   const dispatch = useDispatch();
-  const filteredGamesData: IGameData[] = useSelector(getFilteredGamesSelector);
+  const filteredGames: IGameData[] = useSelector(getFilteredGamesSelector);
   const currentUser = useSelector(getCurrentUserDataSelector);
-  const [isLoading, setIsLoading] = useState(false);
-  const { platform } = useParams();
+  const isLoading = useSelector(getLoadingSelector);
 
+  const { platform } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
+
   const criteria = searchParams.get("criteria") || "";
   const genre = searchParams.get("genre") || "";
   const age = searchParams.get("age") || "";
@@ -52,85 +49,49 @@ const ProductPage = () => {
     setSearchParams(searchParams);
   };
 
-  useEffect(() => {
-    setIsLoading(true);
-    const requestData = { age, criteria, genre, platform, searchText };
-    dispatch(filteredGamesParams(requestData));
-    setIsLoading(false);
-  }, [dispatch, age, criteria, genre, platform, searchText]);
-
-  const cards = filteredGamesData.map((game) => (
-    <Col key={game._id}>
-      <GameCard
-        _id={game._id}
-        name={game.name}
-        genre={game.genre}
-        image={game.image}
-        price={game.price}
-        rating={game.rating}
-        description={game.description}
-        age={game.age}
-        platform={game.platform}
-        amount={game.amount}
-        selected={game.selected}
-      />
-    </Col>
-  ));
-
-  const gameCards = useSuspense(
-    isLoading,
-    setIsLoading,
-    cards,
-    <StyledSpinner style={{ top: "40%", left: "59%" }}>Loading</StyledSpinner>,
-    <h3 style={{ color: "white" }}>Nothing was found...</h3>
-  );
-
   const onClickOpenEditModal = () => {
     dispatch(openModal({ type: MODAL_TYPES.ADD_GAME_MODAL }));
   };
 
+  useEffect(() => {
+    const requestData = { age, criteria, genre, platform, searchText };
+    dispatch(getFilteredGames(requestData));
+  }, [dispatch, age, criteria, genre, platform, searchText]);
+
   return (
-    <Wrapper>
+    <>
       <Header />
-      <Container>
+      <Section>
         <BoxSearchBar>
           <SearchBar
             searchParam={searchText}
             onSelectedParams={onSelectedValues}
           />
-          <>
-            {currentUser?.role === "Admin" && (
-              <Button type="submit" onClick={onClickOpenEditModal}>
-                Create Card
-              </Button>
-            )}
-          </>
+          {currentUser?.role === "Admin" && (
+            <Button type="submit" onClick={onClickOpenEditModal}>
+              Create Card
+            </Button>
+          )}
         </BoxSearchBar>
-        <BoxSort>
-          <Navigation>
-            <TitlePlatform>{platform}</TitlePlatform>
+        <BoxFilters>
+          <FiltersBar />
+          <BoxGames>
+            <Title textAlign="left">Products</Title>
             <Hr />
-            <CriteriaFilter
-              searchParam={criteria}
-              onSelectedParams={onSelectedValues}
-            />
-            <GenreFilter
-              searchParam={genre}
-              onSelectedParams={onSelectedValues}
-            />
-            <AgeFilter searchParams={age} onSelectedParams={onSelectedValues} />
-          </Navigation>
-          <ContainerBoxGames>
-            <BoxGames>
-              <Title>Products</Title>
-              <Hr />
-              <Row>{gameCards}</Row>
-            </BoxGames>
-          </ContainerBoxGames>
-        </BoxSort>
-      </Container>
+            <Row>
+              {isLoading ? (
+                <Spiner />
+              ) : filteredGames.length ? (
+                <GamesList games={filteredGames} />
+              ) : (
+                <ErrorMessage>Nothing was found...</ErrorMessage>
+              )}
+            </Row>
+          </BoxGames>
+        </BoxFilters>
+      </Section>
       <Footer />
-    </Wrapper>
+    </>
   );
 };
 

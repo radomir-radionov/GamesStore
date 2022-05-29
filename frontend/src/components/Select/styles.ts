@@ -1,5 +1,6 @@
 import { Field } from "formik";
 import styled from "styled-components";
+import { colors } from "styles";
 
 export const Row = styled.div`
   margin-bottom: 20px;
@@ -15,18 +16,21 @@ export const Label = styled.label``;
 export const StyledField = styled(Field).attrs({
   as: "select",
 })`
-  border: 2px solid #ccc;
-  color: white;
-  background: transparent;
+  padding: 6px;
+  border: 2px solid ${colors.WHEAT};
+  border-radius: 6px;
+  color: ${colors.WHEAT};
+  background-color: transparent;
+  cursor: pointer;
 `;
 
 export const Option = styled.option`
-  background-color: #121212;
+  background-color: ${colors.LIGHT_BLACK};
 `;
 
 export const TextError = styled.p`
   margin: 0;
   text-align: end;
   font-size: 1rem;
-  color: red;
+  color: ${colors.RED};
 `;

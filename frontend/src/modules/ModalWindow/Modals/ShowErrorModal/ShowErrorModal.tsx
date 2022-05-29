@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getErrorSelector } from "redux/userActivity/selectors";
-import { upDateError } from "redux/userActivity/UserActivitySlice";
+import { getErrorSelector } from "redux/User/selectors";
+import { upDateError } from "redux/User/UserSlice";
 import { Container, TextError } from "./styles";
 
 const ShowErrorModal = () => {

@@ -7,9 +7,9 @@ export const getTopGamesSelector = createSelector(
   (state) => state.topGames
 );
 
-export const getTopGamesLoadingSelector = createSelector(
+export const getSearchedGamesSelector = createSelector(
   games,
-  (state) => state.loading
+  (state) => state.searchedGames
 );
 
 export const getNewGameDataSelector = createSelector(
@@ -41,3 +41,10 @@ export const getGamesInCartSelector = createSelector(
   games,
   (state) => state.cartGames
 );
+
+export const getLoadingSelector = createSelector(
+  games,
+  (state) => state.loading
+);
+
+export const getErrorSelector = createSelector(games, (state) => state.error);

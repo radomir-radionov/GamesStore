@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { loginDataRequest } from "redux/userActivity/UserActivitySlice";
+import { loginDataRequest } from "redux/User/UserSlice";
 import AppRouter from "./routes/AppRouter";
 
 function App() {

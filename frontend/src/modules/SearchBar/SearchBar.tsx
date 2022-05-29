@@ -1,4 +1,5 @@
-import { Container, Form, Input } from "./styles";
+import { SearchIcon } from "assets";
+import { BoxImg, Form, Img, Input } from "./styles";
 
 interface ISearchBarProps {
   searchParam: string;
@@ -7,18 +8,21 @@ interface ISearchBarProps {
 
 const SearchBar = ({ searchParam, onSelectedParams }: ISearchBarProps) => {
   return (
-    <Container>
+    <>
       <Form>
+        <BoxImg>
+          <Img src={SearchIcon} alt="Search icon" />
+        </BoxImg>
         <Input
-          value={searchParam}
           type="search"
-          placeholder="Search"
+          placeholder="Enter a game name"
+          value={searchParam}
           onChange={(e) => {
             onSelectedParams("searchText", e.target.value);
           }}
         />
       </Form>
-    </Container>
+    </>
   );
 };
 

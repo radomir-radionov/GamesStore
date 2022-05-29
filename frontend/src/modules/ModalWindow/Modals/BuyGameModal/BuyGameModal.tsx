@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateCartGamesData } from "redux/Games/GamesSlice";
 import { getGamesInCartSelector } from "redux/Games/selectors";
 import { closeModal } from "redux/modalWindow/ModalWindowSlice";
-import { getUserBalanceSelector } from "redux/userActivity/selectors";
-import { updateUserBalance } from "redux/userActivity/UserActivitySlice";
+import { getUserBalanceSelector } from "redux/User/selectors";
+import { updateUserBalance } from "redux/User/UserSlice";
 import { IGameData } from "types";
 import {
   Body,

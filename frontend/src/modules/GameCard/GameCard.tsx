@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addEditGameData, addGameInCart } from "redux/Games/GamesSlice";
 import { getGamesInCartSelector } from "redux/Games/selectors";
 import { openModal } from "redux/modalWindow/ModalWindowSlice";
-import { getCurrentUserDataSelector } from "redux/userActivity/selectors";
+import { getCurrentUserDataSelector } from "redux/User/selectors";
 import { IGameData } from "types";
 import {
   Card,

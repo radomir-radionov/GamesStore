@@ -48,29 +48,29 @@ const AddGameModal = () => {
         <Header>
           <Title>Create card</Title>
           <CloseBtn type="button" onClick={onClickCloseModal}>
-            <Span> &times;</Span>
+            <Span>&times;</Span>
           </CloseBtn>
         </Header>
         <Body>
           {dataForm.map((data) => (
             <FormikControl
               key={data.value}
-              control="input"
               type="text"
+              control="input"
               label={data.title}
               name={data.value}
             />
           ))}
           <FormikControl
-            control="textarea"
             type="text"
+            control="textarea"
             label="Description"
             name="description"
           />
-          <FormikControl control="select" type="text" label="Age" name="age" />
+          <FormikControl type="text" control="select" label="Age" name="age" />
           <FormikControl
-            control="checkbox"
             type="text"
+            control="checkbox"
             label="Platform"
             name="platform"
           />

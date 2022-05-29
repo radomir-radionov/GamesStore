@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateCartGamesData } from "redux/Games/GamesSlice";
 import { getGamesInCartSelector } from "redux/Games/selectors";
 import { openModal } from "redux/modalWindow/ModalWindowSlice";
-import { getUserBalanceSelector } from "redux/userActivity/selectors";
+import { getUserBalanceSelector } from "redux/User/selectors";
 import { IGameData } from "types";
 import { BoxBalance, BoxButton, Button, Hr, Text } from "./styles";
 

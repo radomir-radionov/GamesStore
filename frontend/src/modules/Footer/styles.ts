@@ -10,9 +10,7 @@ export const BoxLink = styled.div``;
 
 export const Link = styled.a``;
 
-export const Title = styled.h3`
-  color: white;
-`;
+export const Title = styled.h3``;
 
 export const Img = styled.img`
   width: 45px;

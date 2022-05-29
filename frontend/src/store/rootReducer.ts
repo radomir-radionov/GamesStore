@@ -1,11 +1,11 @@
-import modalWindowSlice from "redux/modalWindow/ModalWindowSlice";
-import signUpSlice from "redux/userActivity/UserActivitySlice";
+import userSlice from "redux/User/UserSlice";
 import gamesSlice from "redux/Games/GamesSlice";
+import modalWindowSlice from "redux/modalWindow/ModalWindowSlice";
 
 const rootReducer = {
-  modal: modalWindowSlice,
+  user: userSlice,
   games: gamesSlice,
-  user: signUpSlice,
+  modal: modalWindowSlice,
 };
 
 export default rootReducer;

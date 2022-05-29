@@ -1,30 +1,28 @@
 import styled from "styled-components";
+import { colors } from "styles";
 
-export const Wrapper = styled.div``;
-
-export const Main = styled.div`
-  min-height: 80vh;
-  width: 110vh;
+export const Section = styled.section`
   display: flex;
+  flex: 1;
   flex-direction: column;
+  width: 110vh;
   margin: 0 auto;
   margin-top: 30px;
   margin-bottom: 30px;
   padding: 25px;
   border-radius: 50px;
-  background: rgba(0, 0, 0, 0.6);
+  background: ${colors.BOX_SHADOW};
 `;
 
-export const Title = styled.h3`
-  margin: 0 0 0.5rem 0;
-  padding: 0 0 0 2rem;
-  font-size: 1.4rem;
-  color: white;
+export const Title = styled.h2`
+  padding-left: 24px;
+  margin-bottom: 10px;
+  color: ${colors.WHITE};
 `;
 
 export const Hr = styled.hr`
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 12px;
 `;
 
 export const Table = styled.table``;
@@ -35,10 +33,9 @@ export const Tbody = styled.tbody``;
 
 export const Tr = styled.tr`
   padding: 10px;
-  border-bottom: 1px solid white;
-  color: white;
+  border-bottom: 1px solid ${colors.WHITE};
 `;
 
 export const Th = styled.th`
-  padding: 20px 30px 20px 30px;
+  padding: 20px 30px;
 `;

@@ -1,32 +1,31 @@
 import styled from "styled-components";
+import { colors } from "styles";
 
-export const Wrapper = styled.div``;
-
-export const Container = styled.div`
-  height: 80vh;
+export const Section = styled.section`
   display: flex;
+  flex: 1;
   justify-content: center;
   align-items: center;
   border-radius: 30px;
 `;
 
-export const CardProfile = styled.div`
-  padding: 15px;
+export const CardProfile = styled.section`
+  padding: 14px;
   border-radius: 30px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: ${colors.BOX_SHADOW_DARK};
 `;
 
-export const BoxTitle = styled.div`
-  padding: 0 0 15px 15px;
-  margin-bottom: 15px;
-  border-bottom: 2px solid white;
+export const BoxTitle = styled.header`
+  padding: 0 0 14px 14px;
+  margin-bottom: 14px;
+  border-bottom: 2px solid ${colors.WHITE};
 `;
 
 export const Title = styled.p`
-  font-size: 25px;
   margin: 0;
+  font-size: 2rem;
   text-align: left;
-  color: white;
+  color: ${colors.WHITE};
 `;
 
 export const Body = styled.div`

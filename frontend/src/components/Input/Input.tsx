@@ -1,5 +1,5 @@
 import { ErrorMessage } from "formik";
-import { FormControl, Label, Row, StyledField, TextError } from "./styles";
+import { FormControl, Label, Wrapper, StyledField, TextError } from "./styles";
 
 interface IInputProps {
   type: string;
@@ -9,13 +9,13 @@ interface IInputProps {
 
 const Input = ({ type, label, name }: IInputProps) => {
   return (
-    <Row>
+    <Wrapper>
       <FormControl>
         <Label htmlFor={name}>{label}</Label>
         <StyledField type={type} id={name} name={name} />
       </FormControl>
       <ErrorMessage name={name} component={TextError} />
-    </Row>
+    </Wrapper>
   );
 };
 
