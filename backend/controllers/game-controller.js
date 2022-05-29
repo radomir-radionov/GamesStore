@@ -4,11 +4,20 @@ class GameController {
   async addGame(req, res, next) {
     try {
       const { newGame } = req.body;
-      const { name, genre, price, image, description, age, platform } = newGame;
-      const selected = false;
-      const rating = 1;
-      const amount = 1;
-      const gameData = await gameService.addGame(
+      const {
+        name,
+        genre,
+        price,
+        image,
+        description,
+        age,
+        platform,
+        rating = 1,
+        amount = 1,
+        selected = false,
+      } = newGame;
+
+      await gameService.addGame(
         name,
         genre,
         description,
@@ -20,11 +29,10 @@ class GameController {
         platform,
         selected
       );
-      return res.json(gameData);
+      return res.status(200);
     } catch (e) {
       next(e);
     }
-    return res.status(200);
   }
 
   async deleteGame(req, res, next) {
@@ -35,7 +43,6 @@ class GameController {
     } catch (e) {
       next(e);
     }
-    return res.status(200);
   }
 
   async editGame(req, res, next) {
@@ -56,7 +63,6 @@ class GameController {
     } catch (e) {
       next(e);
     }
-    return res.status(200);
   }
 }
 

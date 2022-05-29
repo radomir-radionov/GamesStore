@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { initialValues, validationSchema } from "./FormicConfig";
 import FormikControl from "../../formikControl";
 import { closeModal } from "redux/modalWindow/ModalWindowSlice";
-import { userChangepPasswordData } from "redux/userActivity/UserActivitySlice";
+import { userChangepPasswordData } from "redux/User/UserSlice";
 import {
   Body,
   Button,

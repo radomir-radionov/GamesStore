@@ -7,25 +7,18 @@ import { useSelector } from "react-redux";
 import {
   getCurrentUserDataSelector,
   getErrorSelector,
-} from "redux/userActivity/selectors";
-import {
-  Wrapper,
-  Container,
-  Title,
-  Body,
-  BoxTitle,
-  CardProfile,
-} from "./styles";
+} from "redux/User/selectors";
+import { Section, Title, Body, BoxTitle, CardProfile } from "./styles";
 
 const ProfilePage = () => {
   const user = useSelector(getCurrentUserDataSelector);
   const errorData = useSelector(getErrorSelector);
 
   return (
-    <Wrapper>
+    <>
       <Header />
       {errorData.isError && <ShowErrorModal />}
-      <Container>
+      <Section>
         <CardProfile>
           <BoxTitle>
             <Title>{user.name} profile page</Title>
@@ -34,9 +27,9 @@ const ProfilePage = () => {
             <ChangeUserDataModal />
           </Body>
         </CardProfile>
-      </Container>
+      </Section>
       <Footer />
-    </Wrapper>
+    </>
   );
 };
 

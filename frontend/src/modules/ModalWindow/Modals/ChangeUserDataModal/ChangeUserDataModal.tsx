@@ -5,7 +5,7 @@ import { Button, ButtonsBox, StyledForm } from "./styles";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/modalWindow/ModalWindowSlice";
 import { MODAL_TYPES } from "modules/ModalWindow/modalTypes";
-import { userChangeNameData } from "redux/userActivity/UserActivitySlice";
+import { userChangeNameData } from "redux/User/UserSlice";
 
 interface INameValue {
   name: string;
@@ -29,10 +29,10 @@ const ChangeUserDataModal = () => {
     >
       <StyledForm>
         <FormikControl
-          control="input"
           type="text"
-          label="Username"
           name="name"
+          control="input"
+          label="Username"
         />
         <ButtonsBox>
           <Button type="submit">Save Profile</Button>

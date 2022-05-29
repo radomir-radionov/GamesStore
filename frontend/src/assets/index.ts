@@ -10,6 +10,9 @@ import MainPicture from "./images/mainBackground.jpg";
 import ProfileIcon from "./images/profileIcon.svg";
 import CartIcon from "./images/cartIcon.svg";
 import ExitIcon from "./images/exitIcon.svg";
+import MainBackground from "./images/mainBackground.jpg";
+import SearchIcon from "./images/searchIcon.svg";
+import Dragon from "./images/dragon.png";
 
 export {
   PC,
@@ -24,4 +27,7 @@ export {
   ProfileIcon,
   CartIcon,
   ExitIcon,
+  MainBackground,
+  SearchIcon,
+  Dragon,
 };

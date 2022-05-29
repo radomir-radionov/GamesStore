@@ -1,53 +1,52 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { colors } from "styles";
 
 export const Container = styled.section`
   width: 80%;
   max-width: 1300px;
   min-width: 300px;
-  padding: 30px;
-  border-radius: 30px;
-  background: rgba(0, 0, 0, 0.6);
+  padding: 28px;
+  border-radius: 28px;
+  background: ${colors.BOX_SHADOW_DARK};
 `;
 
 export const Header = styled.header`
-  border-radius: 30px;
+  border-radius: 28px;
 `;
 
 export const Hr = styled.hr``;
 
-export const Title = styled.h3`
-  font-size: 1.4rem;
-  color: white;
+export const Title = styled.h2`
+  color: ${colors.WHITE};
 `;
 
 export const Section = styled.section`
-  margin-top: 30px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 28px;
+  margin-top: 28px;
 `;
 
 export const CardTitle = styled.h4`
-  color: white;
-  text-decoration: none;
+  color: ${colors.WHITE};
 `;
-export const Img = styled.img``;
+export const Img = styled.img`
+  margin-bottom: 8px;
+`;
 
 export const Card = styled.div`
-  width: 250px;
-  padding: 20px 50px;
+  width: 260px;
+  padding: 28px 48px;
   text-align: center;
-  border: 3px solid #f2f2f2;
-  border-bottom: 7px solid #f2f2f2;
+  border: 2px solid ${colors.LIGHT_GRAY};
+  border-bottom: 6px solid ${colors.LIGHT_GRAY};
   border-radius: 20px;
-  background-color: black;
+  background-color: ${colors.BLACK};
 
   &:hover {
-    border: 3px solid #562370;
-    border-bottom: 7px solid #562370;
-    border-radius: 20px;
+    border: 2px solid ${colors.RED};
   }
 `;
 

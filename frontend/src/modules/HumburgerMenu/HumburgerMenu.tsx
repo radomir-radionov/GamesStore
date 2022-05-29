@@ -7,10 +7,10 @@ import { openModal } from "redux/modalWindow/ModalWindowSlice";
 import {
   getAuthSelector,
   getCurrentUserDataSelector,
-} from "redux/userActivity/selectors";
+} from "redux/User/selectors";
 import { CartIcon, ExitIcon, ProfileIcon } from "assets";
 import { Outlet, useNavigate } from "react-router-dom";
-import { logout } from "redux/userActivity/UserActivitySlice";
+import { logout } from "redux/User/UserSlice";
 import { getGamesInCartSelector } from "redux/Games/selectors";
 import { IGameData } from "types";
 import { pageRoutes } from "constants/pageRoutes";
@@ -20,9 +20,11 @@ import {
   DropDownContent,
   Icon,
   Img,
+  ListItem,
+  ListItems,
   MenuLabel,
-  Navigation,
-  TextBox,
+  Nav,
+  StyledSpan,
 } from "./styles";
 
 const HumburgerMenu = () => {
@@ -63,51 +65,65 @@ const HumburgerMenu = () => {
       <MenuLabel onClick={onHandleClick}>
         <Icon clicked={click}>&nbsp;</Icon>
       </MenuLabel>
-      <Navigation clicked={click}>
-        <CustomLink to={pageRoutes.HOME}>Home</CustomLink>
-        <CustomLink to={pageRoutes.ABOUT} onClick={onClickOpenPageHandler}>
-          About
-        </CustomLink>
-        <DropDown>
-          <Dropbtn>Products &#x21e9;</Dropbtn>
-          <DropDownContent>
-            {products.map((product) => (
-              <CustomLink
-                key={product.id}
-                to={`/products/${product.href}`}
-                onClick={onClickOpenPageHandler}
-              >
-                {product.name}
-              </CustomLink>
-            ))}
-          </DropDownContent>
-        </DropDown>
-        {(!isAuth && (
-          <>
-            <Button text="Sign In" onClick={onClickOpenSignInModal} />
-            <Button text="Sign Up" onClick={onClickOpenSignUpModal} />
-          </>
-        )) || (
-          <>
-            <CustomLink to={pageRoutes.PROFILE}>
-              <TextBox>
-                <Img src={ProfileIcon} alt="profileIcon" />
-                {user.name}
-              </TextBox>
+      <Nav clicked={click}>
+        <ListItems>
+          <ListItem>
+            <CustomLink to={pageRoutes.HOME}>Home</CustomLink>
+          </ListItem>
+          <ListItem>
+            <CustomLink to={pageRoutes.ABOUT} onClick={onClickOpenPageHandler}>
+              About
             </CustomLink>
-            <CustomLink to={pageRoutes.CART}>
-              <TextBox>
-                <Img src={CartIcon} alt="cartIcon" />
-                {cartGames.length}
-              </TextBox>
-            </CustomLink>
-            <CustomLink to="logout" onClick={onClickLogout}>
-              <Img src={ExitIcon} alt="exitIcon" />
-            </CustomLink>
-          </>
-        )}
+          </ListItem>
+          <ListItem>
+            <DropDown>
+              <Dropbtn>Products &#x21e9;</Dropbtn>
+              <DropDownContent>
+                {products.map((product) => (
+                  <CustomLink
+                    key={product.id}
+                    to={`/products/${product.href}`}
+                    onClick={onClickOpenPageHandler}
+                  >
+                    {product.name}
+                  </CustomLink>
+                ))}
+              </DropDownContent>
+            </DropDown>
+          </ListItem>
+          {(!isAuth && (
+            <>
+              <ListItem>
+                <Button text="Sign In" onClick={onClickOpenSignInModal} />
+              </ListItem>
+              <ListItem>
+                <Button text="Sign Up" onClick={onClickOpenSignUpModal} />
+              </ListItem>
+            </>
+          )) || (
+            <>
+              <ListItem>
+                <CustomLink to={pageRoutes.PROFILE}>
+                  <Img src={ProfileIcon} alt="Profile icon" />
+                  <StyledSpan>{user.name}</StyledSpan>
+                </CustomLink>
+              </ListItem>
+              <ListItem>
+                <CustomLink to={pageRoutes.CART}>
+                  <Img src={CartIcon} alt="Cart icon" />
+                  <StyledSpan>{cartGames.length}</StyledSpan>
+                </CustomLink>
+              </ListItem>
+              <ListItem>
+                <CustomLink to="logout" onClick={onClickLogout}>
+                  <Img src={ExitIcon} alt="Exit icon" />
+                </CustomLink>
+              </ListItem>
+            </>
+          )}
+        </ListItems>
         <Outlet />
-      </Navigation>
+      </Nav>
     </>
   );
 };

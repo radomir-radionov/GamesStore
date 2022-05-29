@@ -16,7 +16,8 @@ import {
 import FormikControl from "../../formikControl";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setUser } from "redux/userActivity/UserActivitySlice";
+import { setUser } from "redux/User/UserSlice";
+import { dataForm } from "./data";
 
 interface ISumbitProps {
   email: string;
@@ -56,25 +57,15 @@ const SignUpModal = () => {
           </CloseBtn>
         </Header>
         <Body>
-          <FormikControl
-            control="input"
-            type="text"
-            label="Email"
-            name="email"
-          />
-          <FormikControl control="input" type="text" label="Name" name="name" />
-          <FormikControl
-            control="input"
-            type="text"
-            label="Password"
-            name="password"
-          />
-          <FormikControl
-            control="input"
-            type="text"
-            label="Repeat password"
-            name="passwordConfirmation"
-          />
+          {dataForm.map((data) => (
+            <FormikControl
+              key={data.name}
+              type={data.type}
+              control={data.control}
+              label={data.label}
+              name={data.name}
+            />
+          ))}
         </Body>
         <Footer>
           <Button type="submit">Submit</Button>

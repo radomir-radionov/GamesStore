@@ -1,108 +1,61 @@
-import axios from "axios";
-import { Footer, GameCard, Games, Header } from "modules";
-import { Categories } from "modules/Categories";
-import { ShowErrorModal } from "modules/ModalWindow/Modals";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { getErrorSelector } from "redux/userActivity/selectors";
-import { IGameData } from "types";
-import { UseDebounce } from "utils";
+import { Spiner } from "components";
 import {
-  Container,
-  ErrorBox,
-  ErrorText,
-  Form,
-  Input,
-  Row,
-  StyledSpan,
-  StyledSpinner,
-  Wrapper,
-} from "./styles";
+  Categories,
+  Footer,
+  GamesList,
+  Header,
+  SearchBar,
+  TopGames,
+} from "modules";
+import { ShowErrorModal } from "modules/ModalWindow/Modals";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
+import { getSearchedGames } from "redux/Games/GamesSlice";
+import {
+  getLoadingSelector,
+  getSearchedGamesSelector,
+} from "redux/Games/selectors";
+import { getErrorSelector } from "redux/User/selectors";
+import { Main, Row } from "./styles";
 
 const HomePage = () => {
-  const [searchText, setSearchText] = useState("");
-  const [searchedCard, setSearchedCard] = useState<IGameData[]>([]);
-  const [isSearching, setIsSearching] = useState(false);
-  const [error, setError] = useState(false);
-  const debouncedSearchValue = UseDebounce(searchText, 1200);
+  const dispatch = useDispatch();
+  const searchedGames = useSelector(getSearchedGamesSelector);
+  const isLoading = useSelector(getLoadingSelector);
   const errorData = useSelector(getErrorSelector);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const searchText = searchParams.get("searchText") || "";
+
+  const onSelectedValues = (key: string, searchParam: string) => {
+    searchParams.set(key, searchParam);
+    setSearchParams(searchParams);
+  };
+
   useEffect(() => {
-    if (debouncedSearchValue !== null) {
-      setIsSearching(true);
-      axios
-        .get(
-          `http://localhost:5000/api/search?searchText=${debouncedSearchValue}`
-        )
-        .then((response) => {
-          if (response.status === 201) {
-            setError(true);
-            setIsSearching(false);
-          } else {
-            setError(false);
-            setIsSearching(false);
-            setSearchedCard(response.data);
-          }
-        })
-        .catch(() => {
-          setError(true);
-          setIsSearching(false);
-        });
-    }
-  }, [debouncedSearchValue]);
+    dispatch(getSearchedGames(searchText));
+  }, [dispatch, searchText]);
 
   return (
-    <Wrapper>
+    <>
       <Header />
       {errorData.isError && <ShowErrorModal />}
-      <Container>
-        <Form>
-          <Input
-            value={searchText}
-            type="search"
-            placeholder="Search"
-            onChange={(e) => {
-              setSearchText(e.target.value);
-            }}
-          />
-        </Form>
-        {error ? (
-          <ErrorBox>
-            <ErrorText style={{ color: "black" }}>
-              No results. Write a full name. For example: CS:GO
-            </ErrorText>
-          </ErrorBox>
-        ) : (
-          <Row>
-            {searchedCard.map((game) => (
-              <GameCard
-                key={game._id}
-                _id={game._id}
-                name={game.name}
-                genre={game.genre}
-                image={game.image}
-                price={game.price}
-                rating={game.rating}
-                description={game.description}
-                age={game.age}
-                platform={game.platform}
-                amount={game.amount}
-                selected={game.selected}
-              />
-            ))}
-          </Row>
-        )}
-        {isSearching && (
-          <StyledSpinner className="ring">
-            Loading
-            <StyledSpan />
-          </StyledSpinner>
-        )}
+      <Main>
+        <SearchBar
+          searchParam={searchText}
+          onSelectedParams={onSelectedValues}
+        />
+        {isLoading && <Spiner />}
+        <Row>
+          <GamesList games={searchedGames} />
+        </Row>
         <Categories />
-        <Games />
-      </Container>
+        <TopGames />
+      </Main>
       <Footer />
-    </Wrapper>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import { Form } from "formik";
 import styled from "styled-components";
+import { colors } from "styles";
 
 export const StyledForm = styled(Form)`
   display: flex;
@@ -22,14 +23,14 @@ export const Button = styled.button`
   height: 45px;
   margin-bottom: 10px;
   font-size: large;
-  border: none;
+  border: 2px solid ${colors.WHEAT};
   border-radius: 10px;
-  color: white;
-  background-color: #562370;
+  color: ${colors.WHEAT};
+  background-color: ${colors.BLACK};
   cursor: pointer;
 
   &:hover {
-    background-color: red;
+    background-color: ${colors.DARK_RED};
   }
 
   &:disabled {

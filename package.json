@@ -12,6 +12,7 @@
   "author": "Radomir",
   "license": "ISC",
   "dependencies": {
+    "@types/styled-components": "^5.1.25",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",

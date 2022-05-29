@@ -1,20 +1,25 @@
+import { colors } from "styles";
 import styled from "styled-components";
 
-export const Wrapper = styled.div``;
+interface ITitleProps {
+  textAlign: string;
+}
 
-export const Container = styled.div`
-  min-height: 80vh;
-  display: block;
-  gap: 80px;
+export const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 20px;
+  padding-bottom: 40px;
   border-radius: 30px;
 `;
 
 export const BoxSearchBar = styled.div`
-  margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 40px;
+  margin-top: 30px;
 
   @media (max-width: 1000px) {
     flex-direction: column;
@@ -23,20 +28,20 @@ export const BoxSearchBar = styled.div`
 
 export const Button = styled.button`
   width: 140px;
-  height: 45px;
-  font-size: large;
+  height: 44px;
   border: none;
+  font-size: large;
   border-radius: 10px;
-  color: white;
-  background-color: #562370;
+  color: ${colors.WHITE};
+  background-color: ${colors.VIOLET};
   cursor: pointer;
 
   &:hover {
-    background-color: red;
+    background-color: ${colors.RED};
   }
 `;
 
-export const BoxSort = styled.div`
+export const BoxFilters = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 30px;
@@ -48,69 +53,19 @@ export const BoxSort = styled.div`
   }
 `;
 
-export const Navigation = styled.nav`
-  width: 250px;
-  height: 575px;
-  padding: 15px;
-  border-radius: 30px;
-  background: rgba(0, 0, 0, 0.6);
-`;
-
-export const TitlePlatform = styled.h3`
-  margin: 0 0 0.5rem 0;
-  text-align: center;
-  font-size: 1.4rem;
-  color: white;
-`;
-
 export const Hr = styled.hr`
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 14px;
 `;
 
-export const StyledSpinner = styled.div`
-  & {
-    position: absolute;
-    top: 20%;
-    left: 49%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
-    background: transparent;
-    border: 3px solid #3c3c3c;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 100px;
-    font-family: sans-serif;
-    font-size: 15px;
-    color: #fff000;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    text-shadow: 0 0 10px #fff000;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  }
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    width: 100%;
-    height: 100%;
-    border: 3px solid transparent;
-    border-top: 3px solid #fff000;
-    border-right: 3px solid #fff000;
-    border-radius: 50%;
-    animation: animateC 2s linear infinite;
-  }
-`;
-
-export const ContainerBoxGames = styled.div`
+export const BoxGames = styled.div`
+  position: relative;
   width: 70%;
-  display: flex;
-  flex-direction: column;
+  padding: 15px 15px 24px 15px;
   margin-left: 30px;
-  gap: 30px;
+
+  border-radius: 30px;
+  background: ${colors.BOX_SHADOW};
 
   @media (max-width: 600px) {
     margin-left: 0px;
@@ -121,28 +76,18 @@ export const ContainerBoxGames = styled.div`
   }
 `;
 
-export const BoxGames = styled.div`
-  min-height: 60vh;
-  padding: 15px;
-  border-radius: 30px;
-  background: rgba(0, 0, 0, 0.6);
-`;
-
-export const Title = styled.h3`
-  margin: 0 0 0.5rem 0;
-  padding: 0 0 0 2rem;
-  font-size: 1.4rem;
-  color: white;
+export const Title = styled("h3")<ITitleProps>`
+  padding-left: ${(props) => (props.textAlign === "center" ? "0" : "24px")};
+  margin-bottom: 10px;
+  text-align: ${(props) => (props.textAlign === "center" ? "center" : "left")};
+  font-size: 1.2rem;
+  color: ${colors.WHITE};
 `;
 
 export const Row = styled.div`
-  margin-top: 50px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 50px 80px;
-`;
-
-export const Col = styled.div`
-  cursor: pointer;
+  margin-top: 50px;
 `;

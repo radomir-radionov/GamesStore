@@ -14,30 +14,39 @@ class UserController {
 
       const { email, name, password } = req.body;
 
-      const userRole = await Role.findOne({ value: "User" });
+      const userRole = await Role.findOne({ value: "Admin" });
       const role = userRole.value;
 
-      const userData = await userService.registration(email, name, password, role);
+      const userData = await userService.registration(
+        email,
+        name,
+        password,
+        role
+      );
 
-      res.cookie("refreshToken", userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+      res.cookie("refreshToken", userData.refreshToken, {
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+      });
 
       return res.json(userData);
     } catch (e) {
       next(e);
     }
-    return res.status(200);
   }
 
   async login(req, res, next) {
     try {
       const { email, password } = req.body;
       const userData = await userService.login(email, password);
-      res.cookie("refreshToken", userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+      res.cookie("refreshToken", userData.refreshToken, {
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+      });
       return res.json(userData);
     } catch (e) {
       next(e);
     }
-    return res.status(200);
   }
 
   async saveProfile(req, res, next) {
@@ -48,7 +57,6 @@ class UserController {
     } catch (e) {
       next(e);
     }
-    return res.status(200);
   }
 
   async getUsers(req, res, next) {
@@ -58,7 +66,6 @@ class UserController {
     } catch (e) {
       next(e);
     }
-    return res.status(200);
   }
 }
 

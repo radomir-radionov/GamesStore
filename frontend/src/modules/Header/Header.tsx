@@ -1,14 +1,14 @@
-import { HumburgerMenu } from "..";
-import { BoxTitle, Title, Wrapper } from "./styles";
+import { HumburgerMenu } from "modules";
+import { BoxTitle, Title, Container } from "./styles";
 
 const Header = () => {
   return (
-    <Wrapper>
+    <Container>
       <BoxTitle>
         <Title>Game Store</Title>
       </BoxTitle>
       <HumburgerMenu />
-    </Wrapper>
+    </Container>
   );
 };
 
