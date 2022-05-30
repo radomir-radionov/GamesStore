@@ -3,7 +3,7 @@ export { default as ControlPanelCart } from "./ControlPanelCart/ControlPanelCart
 export { default as CriteriaFilter } from "./Filters/CriteriaFilter/CriteriaFilter";
 export { default as Footer } from "./Footer/Footer";
 export { default as GameCard } from "./GameCard/GameCard";
-export { default as GameCardInCart } from "./GameCardInCart/GameCardInCart";
+export { default as GameInCart } from "./GameInCart/GameInCart";
 export { default as TopGames } from "./TopGames/TopGames";
 export { default as GenreFilter } from "./Filters/GenreFilter/GenreFilter";
 export { default as Header } from "./Header/Header";

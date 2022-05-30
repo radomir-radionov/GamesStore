@@ -1,8 +1,8 @@
-import { ControlPanelCart, Footer, GameCardInCart, Header } from "modules";
+import { ControlPanelCart, Footer, GameInCart, Header } from "modules";
 import { useSelector } from "react-redux";
 import { getGamesInCartSelector } from "redux/Games/selectors";
 import { IGameData } from "types";
-import { Hr, Section, Table, Tbody, Th, Thead, Title, Tr } from "./styles";
+import { BoxTitle, GamesBox, Section, Title } from "./styles";
 
 const CartPage = () => {
   const cartGames: IGameData[] = useSelector(getGamesInCartSelector);
@@ -11,26 +11,15 @@ const CartPage = () => {
     <>
       <Header />
       <Section>
-        <Title>Cart Page</Title>
-        <Hr />
-        <Table>
-          <Thead>
-            <Tr>
-              <Th>Name</Th>
-              <Th>Platform</Th>
-              <Th>Odrer date</Th>
-              <Th>Amount</Th>
-              <Th>Price($)</Th>
-              <Th>Selected</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {cartGames &&
-              cartGames.map((game) => (
-                <GameCardInCart key={game._id} dataGame={game} />
-              ))}
-          </Tbody>
-        </Table>
+        <BoxTitle>
+          <Title>YOUR SHOPPING CART</Title>
+        </BoxTitle>
+        <GamesBox>
+          {cartGames &&
+            cartGames.map((game) => (
+              <GameInCart key={game._id} dataGame={game} />
+            ))}
+        </GamesBox>
         <ControlPanelCart />
       </Section>
       <Footer />

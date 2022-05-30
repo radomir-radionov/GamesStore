@@ -1,3 +1,4 @@
+import { colors } from "styles";
 import styled from "styled-components";
 
 export interface ICardImage {
@@ -5,7 +6,7 @@ export interface ICardImage {
 }
 
 export const Front = styled.div`
-  width: 240px;
+  width: 230px;
   height: 380px;
   position: absolute;
   left: 0;
@@ -13,8 +14,8 @@ export const Front = styled.div`
   border-radius: 20px;
   transition: 1s;
   backface-visibility: hidden;
-  background-color: black;
-  box-shadow: 0 0 3px 3px #562370;
+  background-color: ${colors.BLACK};
+  box-shadow: 0px 5px 10px 0px ${colors.BOX_SHADOW};
 
   &:hover {
     transform: rotateY(180deg);
@@ -28,9 +29,9 @@ export const Back = styled.div`
   border-radius: 20px;
   transition: 1s;
   backface-visibility: hidden;
-  background-color: black;
+  background-color: ${colors.BLACK};
   transform: rotateY(180deg);
-  box-shadow: 0 0 3px 3px #562370;
+  box-shadow: 0px 5px 10px 0px ${colors.BOX_SHADOW};
 `;
 
 export const Card = styled.div`
@@ -49,7 +50,7 @@ export const Platforms = styled.div`
   position: absolute;
   padding: 5px;
   border-radius: 18px 0 16px 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: ${colors.BOX_SHADOW};
 `;
 
 export const ImgIcon = styled.img`
@@ -70,14 +71,14 @@ export const Body = styled.div`
   justify-content: space-between;
 `;
 
-export const Title = styled.p`
+export const Title = styled.h3`
   font-weight: bolder;
-  color: white;
+  color: ${colors.WHEAT};
 `;
 
-export const Price = styled.p`
+export const Price = styled.h3`
   font-weight: bolder;
-  color: white;
+  color: ${colors.WHEAT};
 `;
 
 export const BoxDescription = styled.div`
@@ -86,32 +87,36 @@ export const BoxDescription = styled.div`
 `;
 
 export const Description = styled.p`
-  text-decoration: none;
-  color: white;
+  display: flex;
+  flex-direction: column;
+  color: ${colors.WHEAT};
 `;
 
 export const Age = styled.p`
-  margin-bottom: 15px;
+  margin-bottom: 14px;
   text-align: center;
-  color: white;
+  color: ${colors.WHEAT};
 `;
 
 export const Footer = styled.footer`
   display: flex;
   justify-content: center;
+  gap: 10px;
 `;
 
 export const Button = styled.button`
-  margin: 0 10px 0 10px;
-  padding: 21px 15px 15px 15px;
-  border: none;
+  width: 100px;
+  height: 40px;
+
+  margin-bottom: 10px;
+  font-size: 1rem;
+  border: 2px solid ${colors.WHEAT};
   border-radius: 10px;
-  font-weight: bolder;
-  color: white;
-  background-color: #562370;
+  color: ${colors.WHEAT};
+  background-color: ${colors.BLACK};
   cursor: pointer;
 
   &:hover {
-    background-color: #8f31be;
+    background-color: ${colors.DARK_RED};
   }
 `;
