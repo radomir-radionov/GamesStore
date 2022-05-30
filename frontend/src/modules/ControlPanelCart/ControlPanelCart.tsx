@@ -5,7 +5,7 @@ import { getGamesInCartSelector } from "redux/Games/selectors";
 import { openModal } from "redux/modalWindow/ModalWindowSlice";
 import { getUserBalanceSelector } from "redux/User/selectors";
 import { IGameData } from "types";
-import { BoxBalance, BoxButton, Button, Hr, Text } from "./styles";
+import { BoxBalance, BoxButton, Button, Container, Hr, Text } from "./styles";
 
 const ControlPanelCart = () => {
   const dispatch = useDispatch();
@@ -30,17 +30,16 @@ const ControlPanelCart = () => {
   };
 
   return (
-    <>
+    <Container>
       <BoxButton>
         <Button onClick={onClickRemoveButtonHandler}>Remove</Button>
       </BoxButton>
-      <Hr />
       <BoxBalance>
-        <Text>Games cost: {totalCost.toFixed(2)} $</Text>
-        <Text>Your balance: {currentBalance} $</Text>
+        <Text>Total cost: {totalCost.toFixed(2)}$</Text>
+        <Text>Your balance: {currentBalance}$</Text>
         <Button onClick={onClickOpenBuyModal}>Buy</Button>
       </BoxBalance>
-    </>
+    </Container>
   );
 };
 

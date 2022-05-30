@@ -17,7 +17,7 @@ export const Title = styled("h3")<ITitleProps>`
   margin-bottom: 10px;
   padding-left: ${(props) => (props.textAlign === "center" ? "0" : "24px")};
   text-align: ${(props) => (props.textAlign === "center" ? "center" : "left")};
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   color: ${colors.WHITE};
 `;
 

@@ -18,6 +18,7 @@ export const Header = styled.header`
 export const Hr = styled.hr``;
 
 export const Title = styled.h2`
+  font-size: 26px;
   color: ${colors.WHITE};
 `;
 

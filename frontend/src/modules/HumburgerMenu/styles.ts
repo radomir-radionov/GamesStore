@@ -15,11 +15,11 @@ export const ListItem = styled.li`
   font-size: 17px;
 
   &:hover {
-    border-bottom: 6px solid #9933cc;
+    border-bottom: 6px solid wheat;
   }
 
   &:active {
-    border-bottom: 6px solid #059862;
+    border-bottom: 6px solid #f6be00;
   }
 `;
 
@@ -39,7 +39,7 @@ export const Icon = styled.span<ComponentClickedProps>`
     display: inline-block;
     width: 35px;
     height: 2px;
-    margin-top: 1.5rem;
+    margin-top: 16px;
     background-color: ${(props) => (props.clicked ? "transparent" : "white")};
     transition: all 0.3s;
 
@@ -68,7 +68,6 @@ export const Icon = styled.span<ComponentClickedProps>`
 
 export const Nav = styled.nav<ComponentClickedProps>`
   display: flex;
-  margin-right: 17px;
 
   @media (max-width: 805px) {
     position: absolute;

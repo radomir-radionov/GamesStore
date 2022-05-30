@@ -10,7 +10,7 @@ interface ILinkProps extends LinkProps {
 
 export const NavLink = styled(Link)<ILinkProps>`
   font-size: ${({ active }) => (active ? "20px" : null)};
-  color: ${({ active }) => (active ? "#FFE87C" : "white")};
+  color: ${({ active }) => (active ? "wheat" : "white")};
   text-decoration: none;
   cursor: pointer;
 
